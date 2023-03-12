@@ -15,6 +15,10 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'app1',
+      library: {
+        type: 'var',
+        name: 'app1'
+      },
       filename: 'remoteEntry.js',
       exposes: {
         './Header': './src/header'
