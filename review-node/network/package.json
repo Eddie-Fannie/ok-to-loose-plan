@@ -1,0 +1,20 @@
+{
+  "name": "nework-cache-demo",
+  "version": "1.0.0",
+  "description": "demo of network cache",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "network",
+    "cache",
+    "demo"
+  ],
+  "author": "Eddie-Fannie",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.1"
+  }
+}

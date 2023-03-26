@@ -261,4 +261,112 @@ function main3() {
     }).catch(e => console.log(e.message));
   }
 
-  main3()
+//   main3()
+
+// async function async1 () {
+//     await new Promise((resolve, reject) => {
+//         resolve()
+//     })
+//     console.log('A')
+// }
+
+// async1()
+
+// new Promise((resolve) => {
+//     console.log('B')
+//     resolve()
+// }).then(() => {
+//     console.log('C')
+// }).then(() => {
+//     console.log('D')
+// })
+
+// 最终结果👉: B A C D
+
+// async function async1 () {
+//     await async2()
+//     console.log('A')
+// }
+
+// async function async2 () {
+//     return new Promise((resolve, reject) => {
+//         resolve()
+//     })
+// }
+
+// async1()
+
+// new Promise((resolve) => {
+//     console.log('B')
+//     resolve()
+// }).then(() => {
+//     console.log('C')
+// }).then(() => {
+//     console.log('D')
+// })
+// 最终结果👉: B C D A
+
+// async function testB () {
+//     return {
+//         then (cb) {
+//             cb();
+//         }
+//     };
+// }
+
+// testB().then(() => console.log(1));
+// Promise.resolve()
+//     .then(() => console.log(2))
+//     .then(() => console.log(3));
+
+// (等待一个then)最终结果👉: 2 1 3
+
+// async function testC () {
+//     return new Promise((resolve, reject) => {
+//         resolve()
+//     })
+// }
+
+// testC().then(() => console.log(1));
+// Promise.resolve()
+//     .then(() => console.log(2))
+//     .then(() => console.log(3));
+    
+// (等待两个then)最终结果👉: 2 3 1
+
+// const testAsync = async function() {
+//     console.log(22)
+//     return Promise.resolve(2)
+// }
+// testAsync().then(res => console.log(res))
+
+// function func () {
+//     console.log(2);
+// }
+
+// async function test () {
+//     console.log(1);
+//     await func();
+//     console.log(3);
+// }
+
+// test();
+// console.log(4);
+
+// 最终结果👉: 1 2 4 3
+
+
+Promise.resolve().then(() => {
+    console.log(0);
+  
+    return new Promise(resolve => {
+      resolve(4)
+    })
+    // 新增一个 then  
+    .then(res => {
+      console.log('新增的 then 执行啦！')
+      return res
+    })
+  }).then(res => {
+    console.log(res)
+  })

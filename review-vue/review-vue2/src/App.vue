@@ -3,15 +3,21 @@
     {{  name  }} - {{ testArr[0] }} - {{ testObj.gender }} - {{ testArr[2].arr[1] }}
     <button @click="handleClick">点击改数据</button>
     <!-- <text-content /> -->
+    <!-- <render-text /> -->
+    <test-key />
   </div>
 </template>
 
 <script>
 // import TextContent from './view/content.vue';
+// import RenderText from './view/render.vue';
+import TestKey from './view/testKey.vue';
 
 export default {
   components: {
     // TextContent,
+    // RenderText,
+    TestKey,
   },
   data() {
     return {
