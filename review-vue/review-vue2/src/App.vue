@@ -39,7 +39,7 @@ export default {
     // }
   },
   created() {
-    console.log(this.$data)
+    console.log(this.$data, TestKey)
 
     setTimeout(() => {
       // this.testArr[0] = 'dddddtest' // 不会触发更新
