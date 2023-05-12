@@ -64,4 +64,22 @@
   /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
   /******/ 	
   /******/ })()
+
+
   ;
+
+  Promise.retry = function(fn, times, delay) {
+    let timer;
+    return new Promise((resolve, reject) => {
+      if (times) {
+        timer = setInterval(() => {
+          fn()
+          resolve('成功')
+          times--
+        }, delay)
+      } else {
+        resolve('重试完成')
+        timer && clearInterval(timer)
+      }
+    })
+  }

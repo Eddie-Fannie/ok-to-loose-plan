@@ -356,17 +356,54 @@ function main3() {
 // 最终结果👉: 1 2 4 3
 
 
-Promise.resolve().then(() => {
-    console.log(0);
+// Promise.resolve().then(() => {
+//     console.log(0);
   
-    return new Promise(resolve => {
-      resolve(4)
+//     return new Promise(resolve => {
+//       resolve(4)
+//     })
+//     // 新增一个 then  
+//     .then(res => {
+//       console.log('新增的 then 执行啦！')
+//       return res
+//     })
+//   }).then(res => {
+//     console.log(res)
+//   })
+
+const promise1 = new Promise((resolve, reject) => {
+    try {
+        setTimeout(() => {
+            console.log('test')
+            resolve('success')
+        }, 1000)
+    } catch (e) {
+        console.error('输出错误')
+        reject('错误')
+    }
+})
+
+const testFun = () => {
+    console.log('面试')
+}
+
+
+promise1.retry = function(fn, times, delay) {
+    let count = times;
+    let timer;
+    return new Promise((resolve, reject) => {
+      if (times) {
+        timer = setInterval(() => {
+          count--
+          fn()
+          resolve('成功')
+        }, delay)
+      } else if (count === 0){
+        console.log('结束了')
+        resolve('重试完成')
+        timer && clearInterval(timer)
+      }
     })
-    // 新增一个 then  
-    .then(res => {
-      console.log('新增的 then 执行啦！')
-      return res
-    })
-  }).then(res => {
-    console.log(res)
-  })
+  }
+
+  promise1.retry(testFun, 3, 2000)

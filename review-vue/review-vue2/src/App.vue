@@ -4,7 +4,7 @@
     <button @click="handleClick">点击改数据</button>
     <!-- <text-content /> -->
     <!-- <render-text /> -->
-    <test-key />
+    <!-- <test-key /> -->
   </div>
 </template>
 
@@ -12,6 +12,15 @@
 // import TextContent from './view/content.vue';
 // import RenderText from './view/render.vue';
 import TestKey from './view/testKey.vue';
+
+function TestClass() {
+  const size = 1000000;
+  this.arr = new Array(3 * size).fill(100);
+  this.name = 'TestClass';
+  this.obj = {
+    arr: new Array(7 * size).fill(200),
+  };
+}
 
 export default {
   components: {
@@ -39,20 +48,23 @@ export default {
     // }
   },
   created() {
-    console.log(this.$data, TestKey)
+    // console.log(this.$data, TestKey)
 
-    setTimeout(() => {
-      // this.testArr[0] = 'dddddtest' // 不会触发更新
-      this.$set(this.testArr, '0', 'ddddd2222') // 可以触发更新
-      // this.name = 'xielin'
-      // this.testArr[2].arr[1] = 'dddjiaheng'
-      console.log('setTimeout')
-    }, 1000)
+    // setTimeout(() => {
+    //   // this.testArr[0] = 'dddddtest' // 不会触发更新
+    //   this.$set(this.testArr, '0', 'ddddd2222') // 可以触发更新
+    //   // this.name = 'xielin'
+    //   // this.testArr[2].arr[1] = 'dddjiaheng'
+    //   console.log('setTimeout')
+    // }, 1000)
+    window.test = new TestClass()
   },
   methods: {
     handleClick() {
       this.name = 'hhhh'
       this.testArr[0] = 'sso-map-sdk'
+
+      window.testCache = new Array(70000).fill(0)
     }
   }
 }
